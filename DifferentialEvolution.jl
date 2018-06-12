@@ -34,6 +34,7 @@ Parameters:
  - `maxiter` number of iterations to run
  - `diffweight` multiplication constant on vector difference
  - `initpop` initial population of vectors
+ - `inrange` applies function to bring all vectors into desired range
  - `verbosity` options regarding logging
     - `:iter` shows iteration number 
     - `:newline` newline before iteration number
