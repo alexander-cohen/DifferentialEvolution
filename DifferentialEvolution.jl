@@ -31,9 +31,10 @@ Parameters:
  - `costf` function to minimize
  - `mi` minimum input vector
  - `ma` maximal input vector
- - `maxiter` number of iterations to run
+ - `nruns` number of iterations to run
  - `diffweight` multiplication constant on vector difference
  - `initpop` initial population of vectors
+ - `io` output stream
  - `inrange` applies function to bring all vectors into desired range
  - `verbosity` options regarding logging
     - `:iter` shows iteration number 
@@ -46,7 +47,7 @@ Parameters:
 """
 function de(costf::Function, mi::Vector, ma::Vector;
     npop = 100,
-    maxiter::Int = 1_000_000,
+    nruns::Int = 1000,
     continueabove = Inf,
     diffweight::Float64 = 0.85,
     initpop = matToCols(mi .+ (rand(length(mi), npop) .* (ma - mi))),
@@ -80,7 +81,7 @@ function de(costf::Function, mi::Vector, ma::Vector;
         return cn < c1 ? (vn, cn) : (v1, c1)
     end 
 
-    while iter <= maxiter
+    while iter <= nruns
         istr = v_alwaysiter ? " #$(iter)" : ""
         varstr = v_showvar ? " var = $(variance)" : ""
         v_newline && log("")
