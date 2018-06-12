@@ -72,7 +72,10 @@ function de(costf::Function, mi::Vector, ma::Vector;
     v_pop = in(:pop, verbosity)
     v_showvar = in(:showvar, verbosity)
 
-    log(a...) = println(io, a...)
+    function log(a...)
+        println(io, a...)
+        flush(io)
+    end
 
     function makenew(v1::Vector, c1::Float64, v2::Vector, v3::Vector)::Tuple{Vector, Float64}
         vn = v1 + (v2 - v3) * diffweight
