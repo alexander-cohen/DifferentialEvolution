@@ -79,7 +79,7 @@ function de(costf::Function, mi::Vector, ma::Vector;
 
     function makenew(v1::Vector, c1::Float64, v2::Vector, v3::Vector)::Tuple{Vector, Float64}
         vn = v1 + (v2 - v3) * diffweight
-        vn = inrange.(vn)
+        vn = inrange(vn)
         cn = costf(vn)
         return cn < c1 ? (vn, cn) : (v1, c1)
     end 
