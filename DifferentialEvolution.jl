@@ -84,6 +84,8 @@ function de(costf::Function, mi::Vector, ma::Vector;
         return cn < c1 ? (vn, cn) : (v1, c1)
     end 
 
+    println("Finished DE initialization")
+
     while iter <= nruns
         istr = v_alwaysiter ? " #$(iter)" : ""
         varstr = v_showvar ? " var = $(variance)" : ""
